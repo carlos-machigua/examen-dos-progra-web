@@ -21,7 +21,7 @@
                             <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
                         </div>
 
-                        
+                    <form class="user" method="POST" action="{{ route('login') }}" novalidate>
                         @csrf
 
                         <!-- Correo institucional @disfarma.hn -->

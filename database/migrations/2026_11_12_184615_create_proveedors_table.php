@@ -11,17 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proveedors', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
+            $table->string('rtn', 14)->unique(); 
+            $table->string('empresa'); 
+            $table->string('contacto'); 
+            $table->string('telefono', 8); 
+            $table->enum('categoria', ['Fármacos', 'Material Quirúrgico', 'Equipos']);
+            $table->decimal('limite_credito', 12, 2);
+            $table->integer('dias_credito'); // 15, 30, 45, 60
+            $table->enum('estado', ['Activo', 'Inactivo'])->default('Activo');
+            $table->date('fecha_registro');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('proveedors');
-    }
+public function down(): void
+{
+    Schema::dropIfExists('proveedores');
+}
 };
