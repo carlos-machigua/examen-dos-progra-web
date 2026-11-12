@@ -1,59 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Logo DISFARMA](public/sb-admin/img/logo_unah.png)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Sistema de Gestión Farmacéutica — DISFARMA Honduras
+# Sistema de Gestión Farmacéutica — DISFARMA Honduras
 
-## About Laravel
+Aplicación web administrativa desarrollada en **Laravel 11** y **Bootstrap 4 (SB Admin 2)** para la gestión integral de inventario farmacéutico, proveedores mayoristas, nómina de personal e indicadores gerenciales (KPIs).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Credenciales de Acceso (Usuario Administrador)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+El sistema cuenta con un usuario administrador configurado para pruebas y evaluación:
 
-## Learning Laravel
+* **Correo institucional:** `admin@disfarma.hn`
+* **Contraseña:** `12345678`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+> **Nota para evaluación en entorno nuevo:** Si el proyecto se despliega desde cero en una base de datos vacía, ejecute el comando de creación rápida indicado en el **Paso 5** de la instalación para generar estas credenciales al instante.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Módulos Implementados
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Sistema de Autenticación y Seguridad:**
+   * Inicio de sesión validado exclusivamente para dominio institucional (`@disfarma.hn`).
+   * Funcionalidad de *"Recordar mi sesión"*, cifrado de contraseñas con **Bcrypt**, protección contra ataques CSRF (`@csrf`) y regeneración/invalidación de sesión para prevenir *Session Fixation*.
+2. **Dashboard Gerencial (KPIs):**
+   * Cálculo dinámico en tiempo real de: total de medicamentos en catálogo, total de proveedores activos, total de empleados en nómina y valoración monetaria total del inventario en Lempiras (`inventario * precio`).
+3. **Medicamentos e Inventario Farmacéutico:**
+   * CRUD completo con validación de SKU único, precios y existencias.
+   * Carga segura de fotografías de empaques en `public/uploads/medicamentos/` (formatos `.jpg`, `.png`, `.webp`, máx. 5 MB).
+   * Alertas visuales de stock mediante badges semánticos (*Óptimo*, *Moderado*, *¡Desabastecimiento!*), buscador por nombre/SKU y paginación.
+4. **Laboratorios y Proveedores Mayoristas:**
+   * CRUD completo con validación estricta de RTN (14 dígitos numéricos únicos), teléfono nacional (8 dígitos iniciando en 2, 3, 8 o 9), límite y plazos de crédito (15, 30, 45 y 60 días).
+5. **Recursos Humanos y Personal Farmacéutico:**
+   * CRUD de colaboradores con validación de DNI (13 dígitos numéricos sin guiones), asignación de cargos farmacéuticos, salarios base en Lempiras (`L. XX,XXX.XX`) y control de estado.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Requisitos Previos
 
-## Contributing
+* PHP >= 8.2
+* Composer
+* MySQL / MariaDB (o SQLite)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Instalación y Despliegue Local
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clonar el repositorio e ingresar al directorio:**
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd examen-dos
+   ```
 
-## Security Vulnerabilities
+2. **Instalar dependencias de PHP:**
+   ```bash
+   composer install
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **Configurar variables de entorno:**
+   Copie el archivo de ejemplo y genere la clave de la aplicación:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   Edite el archivo `.env` con las credenciales de su base de datos (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
 
-## License
+4. **Ejecutar las migraciones de la base de datos:**
+   ```bash
+   php artisan migrate
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Crear el usuario administrador:**
+   ```bash
+   php artisan tinker --execute="App\Models\User::create(['name' => 'Admin Disfarma', 'email' => 'admin@disfarma.hn', 'password' => '12345678']);"
+   ```
+
+6. **Iniciar el servidor de desarrollo:**
+   ```bash
+   php artisan serve
+   ```
+   Acceda desde el navegador a `http://127.0.0.1:8000`.
+
+---
+
+## Autor
+
+* **Carlos Manuel Machigua Espinal** — Ingeniería en Sistemas, UNAH.
