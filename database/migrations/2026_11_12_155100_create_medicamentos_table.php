@@ -10,19 +10,29 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('medicamentos', function (Blueprint $table) {
-            $table->id();
-            $table->string('codigo');
-            $table->string('nombre');
-            $table->string('categoria');
-            $table->decimal('precio', 10, 2);
-            $table->decimal('costo', 10, 2);
-            $table->integer('stock');
-            $table->string('imagen') -> nullable();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('medicamentos', function (Blueprint $table) {
+        $table->id();
+        $table->string('codigo')->unique(); // SKU único
+        $table->string('nombre');
+        $table->enum('categoria', [
+            'Antibióticos',
+            'Analgésicos',
+            'Sueros',
+            'Material Quirúrgico',
+            'Vitaminas'
+        ]);
+        $table->decimal('precio', 10, 2);
+        $table->decimal('costo', 10, 2);
+        $table->integer('inventario');
+        $table->string('imagen')->nullable();
+        $table->string('laboratorio');
+        $table->date('fecha_vencimiento');
+        $table->date('fecha_registro');
+        $table->string('numero_lote');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

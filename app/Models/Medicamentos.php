@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Medicamentos extends Model
 {
     protected $fillable = [
-        'id',
         'codigo',
         'nombre',
         'categoria',
         'precio',
         'costo',
-        'stock',
+        'inventario',
         'imagen',
-        'fecha'
+        'laboratorio',
+        'fecha_vencimiento',
+        'fecha_registro',
+        'numero_lote',
     ];
 }
