@@ -1,6 +1,4 @@
 ![Logo DISFARMA](public/sb-admin/img/logo_unah.png)
-
-# Sistema de Gestión Farmacéutica — DISFARMA Honduras
 # Sistema de Gestión Farmacéutica — DISFARMA Honduras
 
 Aplicación web administrativa desarrollada en **Laravel 11** y **Bootstrap 4 (SB Admin 2)** para la gestión integral de inventario farmacéutico, proveedores mayoristas, nómina de personal e indicadores gerenciales (KPIs).
@@ -86,3 +84,4 @@ El sistema cuenta con un usuario administrador configurado para pruebas y evalua
 ## Autor
 
 * **Carlos Manuel Machigua Espinal** — Ingeniería en Sistemas, UNAH.
+* **NOTA**: Terminé temprano ya que tenía compromisos en la tarde/noche y no me daría tiempo, así que hice lo posible por terminar antes, espero esté bien el resultado.
